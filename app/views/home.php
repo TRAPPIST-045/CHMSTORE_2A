@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="../../public/assets/css/home.css">
 </head>
 <body>
 
@@ -259,6 +259,6 @@
     </div>
 </footer>
 
-<script src="assets/js/home.js"></script>
+<script src="../../public/assets/js/home.js"></script>
 </body>
 </html>

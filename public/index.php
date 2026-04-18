@@ -15,7 +15,7 @@
     </a>
     
     <!-- Student Login Button (Right) -->
-    <a href="login.php" class="nav-btn btn-right" title="Student Login">
+    <a href="../app/views/login.php" class="nav-btn btn-right">
         <i class="fas fa-graduation-cap"></i>
     </a>
 

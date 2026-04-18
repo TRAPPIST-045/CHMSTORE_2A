@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="../../public/assets/css/login.css">
 </head>
 <body>
     <div class="background-title">CHMSTORE</div>
@@ -42,7 +42,7 @@
         </form>
 
         <div class="form-footer">
-            <p>Don't have an account? <a href="register.php" class="signup-link">Sign Up</a></p>
+            <p>Don't have an account? <a href="register.php" class="signup-link">Sign Up</a>
         </div>
     </div>
 
@@ -58,6 +58,6 @@
         </div>
     </div>
 </div>
-    <script src="assets/js/login.js"></script>
+    <script src="../../public/assets/js/login.js"></script>
 </body>
 </html>
