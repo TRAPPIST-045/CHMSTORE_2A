@@ -1,0 +1,169 @@
+:root {
+    --forest-green: #0a5c36;
+    --crimson: #f8498c;
+    --crimson-light: #f07aaf;
+    --off-white: #fcf6f5;
+    --accent-blue: #2b85c1;
+    --text-dark: #222;
+    --text-muted: #777;
+    --border-color: #eaeaea;
+    --card-radius: 14px;
+    --pill-radius: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+body { background-color: #f6f7fa; color: var(--text-dark); font-size: 13px; overflow: hidden; }
+::-webkit-scrollbar { display: none; }
+
+.admin-layout-100vh {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Pill Navbar ===== */
+.pill-navbar {
+    position: fixed;
+    top: 15px; left: 50%;
+    transform: translateX(-50%);
+    width: 92%; max-width: 1200px;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--pill-radius);
+    padding: 8px 20px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    display: flex; justify-content: space-between; align-items: center; gap: 18px;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.brand-logo-placeholder {
+    width: 34px; height: 34px;
+    background: var(--forest-green);
+    color: #fff; font-weight: 700; font-size: .9rem;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+}
+.brand-text {
+    font-weight: 700; color: var(--text-dark);
+    letter-spacing: 1px; font-size: .95rem;
+}
+.nav-pills-container { display: flex; gap: 6px; }
+.nav-pill {
+    padding: 7px 14px;
+    border-radius: var(--pill-radius);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: .78rem; font-weight: 500;
+    display: flex; align-items: center; gap: 6px;
+    transition: all .2s;
+}
+.nav-pill:hover:not(.nav-disabled) { background: #f0f4f8; color: var(--text-dark); }
+.nav-pill.active { background: var(--forest-green); color: #fff; }
+.nav-pill.nav-disabled { opacity: .35; cursor: not-allowed; }
+.nav-right-actions { display: flex; align-items: center; gap: 14px; }
+.lock-icon { color: var(--text-muted); font-size: 1rem; }
+
+/* ===== Login area ===== */
+.login-centered-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 20px 40px;
+}
+.login-wrapper {
+    width: 100%; max-width: 360px;
+}
+.login-header-text h2 {
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+    letter-spacing: -.5px;
+}
+
+.login-error-banner {
+    background: #fff0f5;
+    color: var(--crimson);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: .8rem;
+    margin-bottom: 15px;
+    display: flex; align-items: center; gap: 8px;
+}
+
+.login-card {
+    background: #fff;
+    padding: 28px 26px;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+}
+
+.input-group label {
+    display: block;
+    font-size: .75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+}
+
+.input-field.minimal-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid #dbdbdb;
+    background: transparent;
+    padding: 8px 0;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .2s;
+}
+.input-field.minimal-input:focus { border-color: var(--forest-green); }
+
+.password-wrapper {
+    position: relative;
+    display: flex; align-items: center;
+}
+.password-wrapper .input-field { padding-right: 35px; }
+.password-toggle {
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none;
+    color: var(--text-muted);
+    cursor: pointer; font-size: .95rem;
+}
+
+.login-actions {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 28px;
+}
+
+.btn-primary {
+    background: var(--forest-green);
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: var(--pill-radius);
+    font-weight: 600; font-size: .85rem;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .2s, background .2s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(10,92,54,.25); background: #0c6e41; }
+.login-btn-green { width: 100%; }
+
+.forgot-link {
+    text-align: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: .75rem;
+    transition: color .2s;
+}
+.forgot-link:hover { color: var(--crimson); }
+
+@media (max-width: 600px) {
+    .pill-navbar { padding: 6px 12px; gap: 8px; }
+    .nav-pills-container { display: none; }
+}

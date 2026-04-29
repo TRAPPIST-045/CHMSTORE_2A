@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Gokil";
+  src: url("assets/fonts/Gokil.ttf") format("truetype");
+}
+@font-face {
+  font-family: "SuperBlocky";
+  src: url("assets/fonts/Super Blocky.ttf") format("truetype");
+}
+
+:root {
+  --forest-green: #0a5c36;
+  --crimson: #f8498c;
+  --crimson-light: #f07aaf;
+  --off-white: #fcf6f5;
+  --accent-blue: #2b85c1;
+  --text-dark: #222;
+  --text-muted: #777;
+  --imagebg: #bdbdbd;
+  --border-color: #eaeaea;
+  --card-border-radius: 8px;
+  --pill-radius: 50px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: #ffffff;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  font-size: 13px;
+}

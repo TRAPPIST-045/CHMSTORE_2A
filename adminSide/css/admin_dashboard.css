@@ -1,0 +1,351 @@
+/* ==========================================
+   1. CORE VARIABLES & SETUP
+   ========================================== */
+:root {
+    --forest-green: #0a5c36;
+    --crimson: #f8498c;
+    --crimson-light: #f07aaf;
+    --off-white: #fcf6f5;
+    --accent-blue: #2b85c1;
+    --text-dark: #222;
+    --text-muted: #777;
+    --border-color: #eaeaea;
+    --card-radius: 14px;
+    --pill-radius: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+body { background: #f6f7fa; color: var(--text-dark); font-size: 13px; }
+::-webkit-scrollbar { display: none; }
+
+.admin-layout-100vh { min-height: 100vh; }
+
+/* ==========================================
+   2. PILL NAVBAR
+   ========================================== */
+.pill-navbar {
+    position: fixed;
+    top: 15px; left: 50%;
+    transform: translateX(-50%);
+    width: 96%; max-width: 1280px;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--pill-radius);
+    padding: 8px 18px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    display: flex; justify-content: space-between; align-items: center; gap: 18px;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.brand-logo-placeholder {
+    width: 34px; height: 34px;
+    background: var(--forest-green); color: #fff;
+    font-weight: 700; font-size: .85rem;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+}
+.brand-text { font-weight: 700; color: var(--text-dark); letter-spacing: 1px; font-size: .95rem; }
+.nav-pills-container { display: flex; gap: 4px; }
+.nav-pill {
+    padding: 7px 14px; border-radius: var(--pill-radius);
+    color: var(--text-muted); text-decoration: none;
+    font-size: .78rem; font-weight: 500;
+    display: flex; align-items: center; gap: 6px;
+    transition: all .2s;
+}
+.nav-pill:hover { background: #f0f4f8; color: var(--text-dark); }
+.nav-pill.active { background: var(--forest-green); color: #fff; }
+
+.nav-right-actions { display: flex; align-items: center; gap: 14px; }
+.notification-bell {
+    position: relative; cursor: pointer;
+    color: var(--forest-green); font-size: 1.1rem;
+}
+.notification-bell .badge {
+    position: absolute; top: -5px; right: -8px;
+    background: var(--crimson); color: #fff;
+    font-size: .6rem; padding: 2px 5px;
+    border-radius: 10px; font-weight: 700;
+}
+.admin-profile-pill {
+    display: flex; align-items: center; gap: 8px;
+    padding: 4px 12px 4px 4px;
+    background: #f0f4f8; border-radius: var(--pill-radius);
+}
+.admin-profile-pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.admin-text { display: flex; flex-direction: column; line-height: 1.1; }
+.admin-name { font-size: .75rem; font-weight: 700; color: var(--text-dark); }
+.admin-role { font-size: .6rem; color: var(--text-muted); }
+
+/* ==========================================
+   3. NOTIFICATION PANEL
+   ========================================== */
+.notif-panel {
+    position: fixed; top: 75px; right: 4%;
+    width: 360px; max-height: 72vh;
+    background: #fff;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    z-index: 200;
+    opacity: 0; visibility: hidden;
+    transform: translateY(10px);
+    transition: all .25s cubic-bezier(.175,.885,.32,1.275);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+}
+.notif-panel.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.notif-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px; border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.notif-header span { font-weight: 700; }
+.close-notif-btn { background: none; border: none; font-size: 1rem; color: #999; cursor: pointer; }
+.notif-body { overflow-y: auto; flex: 1; }
+
+/* ==========================================
+   4. MAIN CONTENT AREA & HEADER
+   ========================================== */
+.main-content-area {
+    padding: 90px 3% 40px;
+    max-width: 1280px; margin: 0 auto;
+}
+.list-header-row {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 14px; margin-bottom: 18px;
+}
+.page-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -.5px; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+.add-product-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--forest-green); color: #fff;
+    text-decoration: none; border: none; cursor: pointer;
+    padding: 9px 16px; border-radius: var(--pill-radius);
+    font-size: .8rem; font-weight: 600;
+    transition: all .2s;
+}
+.add-product-btn:hover { background: #0c6e41; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(10,92,54,.2); }
+
+/* ==========================================
+   5. DASHBOARD STATS GRID
+   ========================================== */
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.stat-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.stat-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Custom Colors for Stat Icons */
+.bg-green-light { background: #e6f4ea; }
+.text-green { color: var(--forest-green); }
+
+.bg-blue-light { background: #eef5fb; }
+.text-blue { color: var(--accent-blue); }
+
+.bg-purple-light { background: #f3e8f8; }
+.text-purple { color: #9c27b0; }
+
+.bg-crimson-light { background: #fff0f5; }
+.text-crimson { color: var(--crimson); }
+
+/* ==========================================
+   6. DASHBOARD BOTTOM GRID (Tables & Actions)
+   ========================================== */
+.dashboard-bottom-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 900px) {
+    .dashboard-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dashboard-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 20px;
+}
+
+.dashboard-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-card-header h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.view-all-link {
+    font-size: 0.75rem;
+    color: var(--forest-green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.view-all-link:hover { text-decoration: underline; }
+
+/* Dashboard Table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.dashboard-table th {
+    text-align: left;
+    padding: 10px 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f7f8fa;
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+.dashboard-table tr:last-child td { border-bottom: none; }
+
+/* Custom DB Status Pills */
+.status-pill {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.status-pill.pending { background: #fff8e1; color: #f39c12; }
+.status-pill.processing { background: #eef5fb; color: var(--accent-blue); }
+.status-pill.ready-for-pickup { background: #f3e8f8; color: #9c27b0; }
+.status-pill.completed { background: #e6f4ea; color: var(--forest-green); }
+.status-pill.cancelled { background: #fff0f5; color: var(--crimson); }
+
+/* Quick Actions List */
+.quick-actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quick-action-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f7f8fa;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: background 0.2s;
+}
+
+.quick-action-item:hover {
+    background: #eef5fb;
+}
+
+.qa-icon {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--forest-green);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.qa-text {
+    flex: 1;
+}
+
+.qa-text h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.qa-text p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.qa-arrow {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 700px) {
+    .nav-pills-container { display: none; } /* Hide pills on mobile */
+    .dashboard-stats-grid { grid-template-columns: 1fr; }
+}
